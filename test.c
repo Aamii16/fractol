@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 06:47:12 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/17 03:59:45 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/17 04:23:25 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	put_pixel(t_data *data, int x, int y, int color)
 
 double	scale_x(double x)
 {
-	return (-2 + (x / (double)WIDTH) * 4);
+	return ((double)(-2 + (x / (double)WIDTH) * 4));
 }
 double	scale_y(double y)
 {
-return (-1 + (y / (double)HEIGHT) * 2);
+return ((double)(-1 + (y / (double)WIDTH) * 2));
 }
 
 int main()
@@ -53,21 +53,22 @@ int main()
 	t_data	img;
 	double	x, y;
 	
-	x = 0;
-	y = 0;
+	x = 5;
+	y = 5;
 	img.img = mlx_new_image(mlx, WIDTH, HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bpp, &img.line_length, &img.endian);
 	if (!img.addr)
 		return(printf("Error retrieving data"));
-	while(x < 50)
+	while(x < 70)
 	{	
-		y = 0;	
-		while(y < 50)
+		y = 5;	
+		while(y < 70)
 		{	
-			while(x++ < 50)
-				put_pixel(&img, scale_x(x), scale_y(y), 0xFF0000);
+			put_pixel(&img, (x), (y), 0xFF0000);
 			y++;
 		}
+		//while(y++ < 50)
+		//	put_pixel(&img, x, y, 0xFF0000);
 		x++;
 	}
 	
