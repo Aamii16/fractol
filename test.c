@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 06:47:12 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/19 23:57:36 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/20 03:06:05 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int mandelbrot_set(double cx, double cy, int max_iter)
 	i = 0;		
 	z.re = 0;
 	z.im = 0;
-	while(i < max_iter)
+	while((z.re * z.re) + (z.im * z.im) <= 4 && i < max_iter)
 	{
 		tmpx = (z.re * z.re) - (z.im * z.im) + cx;
 		z.im = (2 * z.re * z.im) + cy;
 		z.re = tmpx;
-		if (fabs((z.re * z.re) + (z.im * z.im)) >= 4)
-			break;
+		//if ((z.re * z.re) + (z.im * z.im) <= 4)
+			//break;
 		i++;
 	}
 	return (i);
@@ -37,43 +37,33 @@ int mandelbrot_set(double cx, double cy, int max_iter)
 
 double	scale_x(double x, double zoom_f)
 {
-	double	maxx;
-	double	minx;
-
-	maxx = 2;
-	minx = -2;
-	return ((x - minx) / (zoom_f * (maxx - minx) / WIDTH));
+	return ((x - WIDTH / 2) * (zoom_f / WIDTH));
 }
 double	scale_y(double y, double zoom_f)
 {
-	double	maxy;
-	double	miny;
-	
-	maxy = 1;
-	miny = -1;
-	return (y - miny) / (zoom_f * (maxy - miny) / HEIGHT);
+	return ((y - HEIGHT / 2) * (zoom_f / HEIGHT));
 }
 
 void	draw_mandelbrot(t_fractal *fractal)
 {
 	int	x;
 	int	y;
-	int	i;
 	int	iterations;
 
-	
 	x = 0;
-	i = 0;
 	while (x < WIDTH)
 	{
 		y = 0;
 		while (y < HEIGHT)
 		{
-			iterations = mandelbrot_set(scale_x(x, 1), scale_y(y, 1), MAX_ITERATIONS);
-			if (i <= MAX_ITERATIONS)
-				put_pixel(&fractal->img, x, y, 0x000000);
+			iterations = mandelbrot_set(scale_x(x, fractal->zoom), scale_y(y, fractal->zoom), MAX_ITERATIONS);
+			if (iterations == MAX_ITERATIONS)
+			{
+				put_pixel(&fractal->img, x, y, 0x00000000);
+				//printf("Pixel set at (%d, %d) with color 0x0000000000\n", x, y);
+			}
 			else
-				put_pixel(&fractal->img, x, y, 0x0000FF);
+				put_pixel(&fractal->img, x, y, set_color(iterations));
 			y++;
 		}
 		x++;

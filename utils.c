@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 08:32:13 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/19 23:53:07 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/20 03:07:50 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	fractal_init(t_fractal *fractal)
 	fractal->c.re = 0;
 	fractal->c.im = 0;
 	fractal->mlx = mlx_init();
+	fractal->zoom = 4;
 	//if (!fractal->mlx)
 		//return ()
 	fractal->window = mlx_new_window(fractal->mlx, WIDTH, HEIGHT, "Amina azia");
@@ -45,9 +46,22 @@ void	fractal_init(t_fractal *fractal)
 	//if (!fractal->img.addr)
 		//return(put_error("Error retrieving data"));
 }
+int set_color(int i)
+{
+    int r;
+    int g;
+    int b;
+    int color;
+
+    r = (i * 9) % 256; // Increase the multiplier for red
+    g = (i * 1) % 256; // Decrease the multiplier for green
+    b = (i * 9) % 256; // Increase the multiplier for blue
+    color = r << 16 | g << 8 | b;
+    return color;
+}
 /*void	fractal_destroy(t_fractal *fractal)
 {
 	mlx_destroy_image(fractal->mlx, fractal->img);
 	mlx_destroy_window(fractal->mlx, fractal->window);
 	mlx_destroy_display(fractal->mlx);
-}*/
+}*/// 00000000 00000000 00000000
