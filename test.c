@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 06:47:12 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/20 03:06:05 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/22 22:34:55 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,28 @@ int mandelbrot_set(double cx, double cy, int max_iter)
 	}
 	return (i);
 }
-
+int	handle_zoom(int button, t_fractal *fractal)
+{
+	if (button == 4)
+	{
+		printf("zoom in\n");
+		fractal->zoom = 1.5;
+	}
+	else if (button == 5)
+	{
+		printf("zoom out\n");
+		fractal->zoom /= 1.5;
+	}
+	return (0);
+}
 
 double	scale_x(double x, double zoom_f)
 {
-	return ((x - WIDTH / 2) * (zoom_f / WIDTH));
+	return ((x - WIDTH / 2) * (4 * zoom_f / WIDTH));
 }
 double	scale_y(double y, double zoom_f)
 {
-	return ((y - HEIGHT / 2) * (zoom_f / HEIGHT));
+	return ((y - HEIGHT / 2) * (4 * zoom_f / HEIGHT));
 }
 
 void	draw_mandelbrot(t_fractal *fractal)
@@ -77,5 +90,6 @@ int main()
 	fractal_init(&fractal);	
 	draw_mandelbrot(&fractal);
 	mlx_put_image_to_window(fractal.mlx, fractal.window, fractal.img.img, 0, 0);	
+	mlx_mouse_hook(fractal.window, handle_zoom, &fractal);
 	mlx_loop(fractal.mlx);
 }

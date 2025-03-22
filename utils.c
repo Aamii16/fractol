@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 08:32:13 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/20 03:07:50 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/22 22:28:41 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ void	put_error(char	*str)
 		str++;
 	}
 }
+
 void	fractal_init(t_fractal *fractal)
 {
 	fractal->c.re = 0;
 	fractal->c.im = 0;
 	fractal->mlx = mlx_init();
-	fractal->zoom = 4;
+	fractal->zoom = 1;
 	//if (!fractal->mlx)
 		//return ()
 	fractal->window = mlx_new_window(fractal->mlx, WIDTH, HEIGHT, "Amina azia");
