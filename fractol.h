@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 08:12:32 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/22 22:34:35 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/23 08:29:47 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 # define WIDTH 800
 # define HEIGHT 800
 # define MAX_ITERATIONS 100
-#include <stdio.h>
-#include <mlx.h>
-#include <math.h>
-#include <unistd.h>
+# include <stdio.h>
+# include <mlx.h>
+# include <math.h>
+# include <unistd.h>
+
 typedef struct s_data
 {
 	void	*img;
@@ -42,10 +43,22 @@ typedef struct s_fractal
 	t_data		img;
 	t_complex	c;
 	double		zoom;
+	char		name;
 }			t_fractal;
-
+//string utils 
+int		ft_strcmp(char *s1, char *s2);
+int		check_coord(char *str);
+float	ft_atof(char *str);
+void	pur_error(char *str);
+// rendering utils
 void	put_pixel(t_data *data, int x, int y, int color);
-void	fractal_init(t_fractal *fractal);
-int    set_color(int i);
+void	draw_fractal(t_fractal *fractal);
+void	mouse_hook(int button, int x, int y, t_fractal *fractal);
+int		set_color(int i);
+double	scale(double x, double zoom_f, double axis);
+//fractal set
+void	draw_julia(t_fractal *fractal);
+
+void	draw_mandelbrot(t_fractal *fractal);
 
 #endif
