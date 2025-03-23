@@ -6,11 +6,11 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 05:36:12 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/23 08:37:54 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/23 08:40:33 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "fractol.h"
 
 int	ft_strcmp(char *s1, char *s2)
 {

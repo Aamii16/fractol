@@ -6,11 +6,18 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 08:27:54 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/23 08:39:04 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/23 08:46:52 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	fractal_destroy(t_fractal *fractal)
+{
+	mlx_destroy_image(fractal->mlx, fractal->img.img);
+	mlx_destroy_window(fractal->mlx, fractal->window);
+	mlx_destroy_display(fractal->mlx);
+}
 
 int	fractal_init(t_fractal *fractal)
 {
@@ -33,12 +40,6 @@ int	fractal_init(t_fractal *fractal)
 	return (1);
 }
 
-void	fractal_destroy(t_fractal *fractal)
-{
-	mlx_destroy_image(fractal->mlx, fractal->img.img);
-	mlx_destroy_window(fractal->mlx, fractal->window);
-	mlx_destroy_display(fractal->mlx);
-}
 
 int main(int ac, char **av)
 {
@@ -55,8 +56,8 @@ int main(int ac, char **av)
 		fractal.c.im = ft_atof(av[3]);
 	}
 	else
-		return(put_error("invalid argument use \nfor Mandelbrot : 'm'\n For Julia : 'j' 'x' 'y' \n"), 0);
-	//fractal_init(&fractal);	
+		return(put_error("Invalid Arguments Use \nfor Mandelbrot : 'm'\n For Julia : 'j' 'x' 'y' \n"), 0);
+	//fractal_init(&fractal);
 	//draw_julia(&fractal);
 	//mlx_put_image_to_window(fractal.mlx, fractal.window, fractal.img.img, 0, 0);	
 	//mlx_mouse_hook(fractal.window, mouse_hook, &fractal);
