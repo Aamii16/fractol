@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 05:36:12 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/23 08:40:33 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/24 02:40:08 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ float	ft_atof(char *str)
 	sign = 1.0;
 	num = 0.0;
 	i = 10.0;
+	while(*str && *str == ' ')
+		str++;
 	if (*str == '-')
 		sign = -1.0;
 	if (*str == '+' || *str == '-')
@@ -64,17 +66,15 @@ float	ft_atof(char *str)
 		num = num * 10 + (*str - '0');
 		str++;
 	}
-	if (*(str++) == '.')
+	if (*str == '.')
+		str++;
+	while (*str && (*str >= '0' && *str <= '9'))
 	{
-		while (*str && (*str >= '0' && *str <= '9'))
-		{
-			fract = fract + ((*str - '0') / i);
-			str++;
-			i *= 10.0;
-		}
+		fract = fract + ((*str - '0') / i);
+		str++;
+		i *= 10.0;
 	}
-	num += fract;
-	return ((float)(num * sign));
+	return ((float)((num + fract) * sign));
 }
 
 void	put_error(char *str)
@@ -84,4 +84,9 @@ void	put_error(char *str)
 		write(1, str, 2);
 		str++;
 	}
+}
+#include <stdio.h>
+int main()
+{
+	printf("%f", ft_atof("10.123456"));
 }
