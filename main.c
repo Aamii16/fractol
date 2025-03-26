@@ -6,20 +6,20 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 08:27:54 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/23 08:46:52 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/26 09:04:26 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	fractal_destroy(t_fractal *fractal)
+void	destroy_fractal(t_fractal *fractal)
 {
 	mlx_destroy_image(fractal->mlx, fractal->img.img);
 	mlx_destroy_window(fractal->mlx, fractal->window);
 	mlx_destroy_display(fractal->mlx);
 }
 
-int	fractal_init(t_fractal *fractal)
+int	init_fractal(t_fractal *fractal)
 {
 	fractal->c.re = 0;
 	fractal->c.im = 0;
@@ -49,7 +49,7 @@ int main(int ac, char **av)
 		fractal.name = 'm';
 	else if (ac == 4 && ft_strcmp(av[1], "j"))
 	{
-		if(!check(av[2] || !check(av[1])))
+		if(!check_coord(av[2]) || !check_coord(av[1]))
 			return(put_error("Invalid Coordinates input\n"), 0);
 		fractal.name = 'j';
 		fractal.c.re = ft_atof(av[2]);
@@ -61,5 +61,6 @@ int main(int ac, char **av)
 	//draw_julia(&fractal);
 	//mlx_put_image_to_window(fractal.mlx, fractal.window, fractal.img.img, 0, 0);	
 	//mlx_mouse_hook(fractal.window, mouse_hook, &fractal);
+	//mlx_hook(fractal.win, 2, 1L<<0, close, &fractal);
 	//mlx_loop(fractal.mlx);
 }

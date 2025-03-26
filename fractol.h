@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 08:12:32 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/23 08:44:55 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/26 08:56:35 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ void	destroy_fractal(t_fractal *fractal);
 void	draw_julia(t_fractal *fractal);
 
 void	draw_mandelbrot(t_fractal *fractal);
+int		close_window(int keycode, t_fractal *fractal);
 
 #endif

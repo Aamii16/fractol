@@ -6,13 +6,13 @@
 #    By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/23 08:48:45 by amzahir           #+#    #+#              #
-#    Updated: 2025/03/23 08:49:14 by amzahir          ###   ########.fr        #
+#    Updated: 2025/03/26 09:01:50 by amzahir          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-OBJS = 
+OBJS = hooks_utils.o string_utils.o render_utils.o mandelbrot.o julia.o main.o
 
 NAME = fractol
 
@@ -23,12 +23,9 @@ all : $(NAME)
 %.o: %.c $(DEP)
 	$(CC) -c $(CFLAGS) $< -o $@
 
-$(NAME): server client
+$(NAME): fractol
 
-server: server.o utils.o
-	$(CC) $(CFLAGS) $^ -o $@
-
-client: client.o utils.o
+fractol: $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
 
 clean: 
@@ -37,7 +34,7 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 
-re: fclean $(NAME)
+re: fclean fractol
 
 .PHONY:
 	all clean fclean re

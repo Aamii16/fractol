@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 05:36:12 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/24 02:40:08 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/26 09:02:52 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	ft_strcmp(char *s1, char *s2)
 	i = 0;
 	while (s1[i] && s2[i])
 	{
-		(unsigned char)s1[i];
-		(unsigned char)s2[i];
+		//(unsigned char)s1[i];
+		//(unsigned char)s2[i];
 		if (s1[i] != s2[i])
 			return (s1[i] - s2[i]);
 		i++;
@@ -84,9 +84,4 @@ void	put_error(char *str)
 		write(1, str, 2);
 		str++;
 	}
-}
-#include <stdio.h>
-int main()
-{
-	printf("%f", ft_atof("10.123456"));
 }
