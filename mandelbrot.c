@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 06:47:12 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/23 08:30:49 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/27 06:41:15 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	mandelbrot_set(double cx, double cy, int max_iter)
 		tmpx = (z.re * z.re) - (z.im * z.im) + cx;
 		z.im = (2 * z.re * z.im) + cy;
 		z.re = tmpx;
-		if ((z.re * z.re) + (z.im * z.im) >= 4)
+		if ((z.re * z.re) + (z.im * z.im) > 4)
 			break ;
 		i++;
 	}
@@ -40,6 +40,7 @@ void	draw_mandelbrot(t_fractal *fractal)
 	int		y;
 	int		iterations;
 
+	put_error("iterations\n");
 	x = 0;
 	while (x < WIDTH)
 	{

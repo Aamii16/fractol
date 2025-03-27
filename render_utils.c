@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 08:32:13 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/23 08:36:12 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/27 06:58:40 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,30 +22,26 @@ void	put_pixel(t_data *data, int x, int y, int color)
 
 void	draw_fractal(t_fractal *fractal)
 {
+	put_error("coucou\n");
+	printf("name %c", fractal->name);
 	if (fractal->name == 'm')
+	{
+		put_error("drawn mandel\n");
 		draw_mandelbrot(fractal);
+		put_error("drawn mandel\n");
+	}
 	else if (fractal->name == 'j')
+	{
 		draw_julia(fractal);
-}
-
-int	mouse_hook(int button, int x, int y, t_fractal *fractal)
-{
-	(void)x;
-	(void)y;
-	if (button == 4)
-		fractal->zoom *= 1.5;
-	else if (button == 5)
-		fractal->zoom /= 1.5;
-	draw_fractal(fractal);
-	mlx_put_image_to_window(fractal->mlx, fractal->window,
-		fractal->img.img, 0, 0);
-	return (0);
+		put_error("drawn julia\n");
+	}
 }
 
 double	scale(double x, double zoom_f, double axis)
 {
 	return ((x - axis / 2) * (4 * zoom_f / axis));
 }
+
 
 int	set_color(int i)
 {

@@ -6,15 +6,29 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 08:51:28 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/26 09:02:20 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/27 05:44:16 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	close_window(int keycode, t_fractal *fractal)
+int	mouse_hook(int button, int x, int y, t_fractal *fractal)
 {
-	(void)keycode;
-	destroy_fractal(fractal);
+	(void)x;
+	(void)y;
+	if (button == 4)
+		fractal->zoom *= 1.5;
+	else if (button == 5)
+		fractal->zoom /= 1.5;
+	draw_fractal(fractal);
+	mlx_put_image_to_window(fractal->mlx, fractal->window,
+		fractal->img.img, 0, 0);
+	return (0);
+}
+
+int	key_hook(int keycode, t_fractal *fractal)
+{
+	if (keycode == 65307)
+		destroy_fractal(fractal);
 	return (0);
 }

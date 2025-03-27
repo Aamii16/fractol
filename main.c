@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 08:27:54 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/26 09:04:26 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/27 07:01:31 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,22 +45,25 @@ int main(int ac, char **av)
 {
 	t_fractal	fractal;
 
-	if (ac == 2 && ft_strcmp(av[1], "m"))
-		fractal.name = 'm';
-	else if (ac == 4 && ft_strcmp(av[1], "j"))
+	if (ac == 2 && !ft_strcmp(av[1], "m"))
 	{
-		if(!check_coord(av[2]) || !check_coord(av[1]))
-			return(put_error("Invalid Coordinates input\n"), 0);
+		fractal.name = 'm';
+		put_error("chosen m\n");
+	}
+	else if (ac == 4 && !ft_strcmp(av[1], "j"))
+	{
+		//if(!check_coord(av[2]) || !check_coord(av[1]))
+			//return(put_error("Invalid Coordinates input\n"), 0);
 		fractal.name = 'j';
 		fractal.c.re = ft_atof(av[2]);
 		fractal.c.im = ft_atof(av[3]);
 	}
 	else
-		return(put_error("Invalid Arguments Use \nfor Mandelbrot : 'm'\n For Julia : 'j' 'x' 'y' \n"), 0);
-	//fractal_init(&fractal);
-	//draw_julia(&fractal);
-	//mlx_put_image_to_window(fractal.mlx, fractal.window, fractal.img.img, 0, 0);	
-	//mlx_mouse_hook(fractal.window, mouse_hook, &fractal);
-	//mlx_hook(fractal.win, 2, 1L<<0, close, &fractal);
-	//mlx_loop(fractal.mlx);
+		return(put_error("Invalid Arguments !! \nFor Mandelbrot Use: ./fractol 'm'\nFor Julia : \t  ./fractol 'j' 'x' 'y' \n"), 0);
+	init_fractal(&fractal);
+	draw_fractal(&fractal);
+	mlx_put_image_to_window(fractal.mlx, fractal.window, fractal.img.img, 0, 0);	
+	mlx_mouse_hook(fractal.window, mouse_hook, &fractal);
+	mlx_key_hook(fractal.window, key_hook, &fractal);
+	mlx_loop(fractal.mlx);
 }

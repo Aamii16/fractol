@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 08:12:32 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/26 08:56:35 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/27 06:53:40 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 # define WIDTH 800
 # define HEIGHT 800
-# define MAX_ITERATIONS 100
+# define MAX_ITERATIONS 150
 # include <stdio.h>
 # include <mlx.h>
 # include <math.h>
 # include <unistd.h>
+#include <stdio.h>
 
 typedef struct s_data
 {
@@ -53,7 +54,7 @@ void	put_error(char *str);
 // rendering utils
 void	put_pixel(t_data *data, int x, int y, int color);
 void	draw_fractal(t_fractal *fractal);
-int	mouse_hook(int button, int x, int y, t_fractal *fractal);
+int		mouse_hook(int button, int x, int y, t_fractal *fractal);
 int		set_color(int i);
 double	scale(double x, double zoom_f, double axis);
 //fractal set
@@ -61,6 +62,6 @@ void	destroy_fractal(t_fractal *fractal);
 void	draw_julia(t_fractal *fractal);
 
 void	draw_mandelbrot(t_fractal *fractal);
-int		close_window(int keycode, t_fractal *fractal);
+int		key_hook(int keycode, t_fractal *fractal);
 
 #endif
