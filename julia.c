@@ -23,7 +23,7 @@ int	julia_set(double zx, double zy, t_complex c)
 		tmpx = (zx * zx) - (zy * zy) + c.re;
 		zy = (2 * zx * zy) + c.im;
 		zx = tmpx;
-		if ((zx * zx) + (zy * zy) >= 4)
+		if ((zx * zx) + (zy * zy) > 4)
 			break ;
 		i++;
 	}
@@ -47,7 +47,7 @@ void	draw_julia(t_fractal *fractal)
 			if (iterations == MAX_ITERATIONS)
 				put_pixel(&fractal->img, x, y, 0x00000000);
 			else
-				put_pixel(&fractal->img, x, y, set_color(iterations));
+				put_pixel(&fractal->img, x, y, set_color_2(iterations));
 			y++;
 		}
 		x++;

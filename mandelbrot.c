@@ -40,7 +40,6 @@ void	draw_mandelbrot(t_fractal *fractal)
 	int		y;
 	int		iterations;
 
-	put_error("iterations\n");
 	x = 0;
 	while (x < WIDTH)
 	{

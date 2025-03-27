@@ -22,26 +22,16 @@ void	put_pixel(t_data *data, int x, int y, int color)
 
 void	draw_fractal(t_fractal *fractal)
 {
-	put_error("coucou\n");
-	printf("name %c", fractal->name);
 	if (fractal->name == 'm')
-	{
-		put_error("drawn mandel\n");
 		draw_mandelbrot(fractal);
-		put_error("drawn mandel\n");
-	}
 	else if (fractal->name == 'j')
-	{
 		draw_julia(fractal);
-		put_error("drawn julia\n");
-	}
 }
 
 double	scale(double x, double zoom_f, double axis)
 {
 	return ((x - axis / 2) * (4 * zoom_f / axis));
 }
-
 
 int	set_color(int i)
 {
@@ -54,5 +44,14 @@ int	set_color(int i)
 	g = (i * 1) % 256;
 	b = (i * 9) % 256;
 	color = r << 16 | g << 8 | b;
+	return (color);
+}
+int set_color_2(int i)
+{
+	int shade;
+	int color;
+
+	shade = (i % 2 == 0) ? 255 : 0; // Alternate between white (255) and black (0)
+	color = shade << 16 | shade << 8 | shade; // Combine the shade value into the RGB components
 	return (color);
 }

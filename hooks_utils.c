@@ -29,6 +29,16 @@ int	mouse_hook(int button, int x, int y, t_fractal *fractal)
 int	key_hook(int keycode, t_fractal *fractal)
 {
 	if (keycode == 65307)
+	{
 		destroy_fractal(fractal);
+		exit(0);
+	}
+	return (0);
+}
+
+int	exit_hook(t_fractal *fractal)
+{
+	destroy_fractal(fractal);
+	exit(0);
 	return (0);
 }

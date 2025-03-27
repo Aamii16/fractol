@@ -12,6 +12,15 @@
 
 #include "fractol.h"
 
+void	put_error(char *str)
+{
+	while (*str)
+	{
+		write(1, str, 1);
+		str++;
+	}
+}
+
 int	ft_strcmp(char *str1, char *str2)
 {
 	int				i;
@@ -43,7 +52,7 @@ int	check_coord(char *str)
 		i++;
 	if (str[i] == '.')
 		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
 		i++;
 	if (str[i] < '0' || str[i] > '9')
 		return (0);
@@ -77,13 +86,4 @@ float	ft_atof(char *str)
 		i *= 10;
 	}
 	return ((float)((num + fract) * sign));
-}
-
-void	put_error(char *str)
-{
-	while (*str)
-	{
-		write(1, str, 1);
-		str++;
-	}
 }

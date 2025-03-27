@@ -17,10 +17,11 @@
 # define HEIGHT 800
 # define MAX_ITERATIONS 150
 # include <stdio.h>
-# include <mlx.h>
+//# include <mlx.h>
+# include "./minilibx-linux/mlx.h"
 # include <math.h>
 # include <unistd.h>
-#include <stdio.h>
+#include <stdlib.h>
 
 typedef struct s_data
 {
@@ -56,6 +57,8 @@ void	put_pixel(t_data *data, int x, int y, int color);
 void	draw_fractal(t_fractal *fractal);
 int		mouse_hook(int button, int x, int y, t_fractal *fractal);
 int		set_color(int i);
+int 	set_color_2(int i);
+
 double	scale(double x, double zoom_f, double axis);
 //fractal set
 void	destroy_fractal(t_fractal *fractal);
@@ -63,5 +66,6 @@ void	draw_julia(t_fractal *fractal);
 
 void	draw_mandelbrot(t_fractal *fractal);
 int		key_hook(int keycode, t_fractal *fractal);
+int		exit_hook(t_fractal *fractal);
 
 #endif
