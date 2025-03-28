@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 05:36:12 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/28 07:21:02 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/28 08:09:42 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	put_error(char *str)
 {
 	while (*str)
 	{
-		write(1, str, 1);
+		write(2, str, 1);
 		str++;
 	}
 }
