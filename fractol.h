@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 08:12:32 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/27 06:53:40 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/28 06:55:54 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 # define HEIGHT 800
 # define MAX_ITERATIONS 150
 # include <stdio.h>
-//# include <mlx.h>
-# include "./minilibx-linux/mlx.h"
+# include <mlx.h>
+//# include "./minilibx-linux/mlx.h"
 # include <math.h>
 # include <unistd.h>
-#include <stdlib.h>
+# include <stdlib.h>
 
 typedef struct s_data
 {
@@ -57,7 +57,7 @@ void	put_pixel(t_data *data, int x, int y, int color);
 void	draw_fractal(t_fractal *fractal);
 int		mouse_hook(int button, int x, int y, t_fractal *fractal);
 int		set_color(int i);
-int 	set_color_2(int i);
+int		set_color_2(int i);
 
 double	scale(double x, double zoom_f, double axis);
 //fractal set

@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 05:36:12 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/27 05:37:16 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/28 07:21:02 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ int	check_coord(char *str)
 		i++;
 	if (str[i] == '.')
 		i++;
-	while (str[i] && str[i] >= '0' && str[i] <= '9')
+	while (str[i] >= '0' && str[i] <= '9')
 		i++;
-	if (str[i] < '0' || str[i] > '9')
+	if (str[i] != '\0')
 		return (0);
 	return (1);
 }
@@ -66,7 +66,7 @@ float	ft_atof(char *str)
 	sign = 1;
 	num = 0;
 	i = 10;
-	while(*str && *str == ' ')
+	while (*str && *str == ' ')
 		str++;
 	if (*str == '-')
 		sign = -1;

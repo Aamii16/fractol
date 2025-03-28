@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 08:32:13 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/27 06:58:40 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/28 06:55:08 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,16 @@ int	set_color(int i)
 	color = r << 16 | g << 8 | b;
 	return (color);
 }
-int set_color_2(int i)
-{
-	int shade;
-	int color;
 
-	shade = (i % 2 == 0) ? 255 : 0; // Alternate between white (255) and black (0)
-	color = shade << 16 | shade << 8 | shade; // Combine the shade value into the RGB components
+int	set_color_2(int i)
+{
+	int		shade;
+	int		color;
+
+	if (i % 2 == 0)
+		shade = 255;
+	else
+		shade = 0;
+	color = shade << 16 | shade << 8 | shade;
 	return (color);
 }
