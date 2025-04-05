@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 08:28:02 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/28 06:26:16 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/28 11:31:36 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	draw_julia(t_fractal *fractal)
 			if (iterations == MAX_ITERATIONS)
 				put_pixel(&fractal->img, x, y, 0x00000000);
 			else
-				put_pixel(&fractal->img, x, y, set_color_2(iterations));
+				put_pixel(&fractal->img, x, y, set_color(iterations));
 			y++;
 		}
 		x++;
